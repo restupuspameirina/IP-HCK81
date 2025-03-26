@@ -1,0 +1,83 @@
+[
+    {
+        "name": "The Literary Awakening",
+        "description": "A deep dive into the world of classic literature.",
+        "price": 35000,
+        "imgUrl": "https://gratefulamericanfoundation.org/wp-content/uploads/2025/01/Kate-Chopin-THE-AWAKENING-1.jpg",
+        "stock": 10,
+        "GenreId": 1
+    },
+    {
+        "name": "Pages of Serenity",
+        "description": "A heartwarming novel about self-discovery and love.",
+        "price": 42000,
+        "imgUrl": "https://m.media-amazon.com/images/I/61lCy3LrjBL._AC_UF1000,1000_QL80_.jpg",
+        "stock": 12,
+        "GenreId": 1
+    },
+    {
+        "name": "The Ocean’s Tale",
+        "description": "An epic adventure of a sailor lost in the vast blue.",
+        "price": 65000,
+        "imgUrl": "https://littletiger.co.uk/wp-content/uploads/2024/10/getimage-21-scaled.jpeg",
+        "stock": 16,
+        "GenreId": 4
+    },
+    {
+        "name": "Whispers of the Forest",
+        "description": "A mystical journey through enchanted woods.",
+        "price": 55000,
+        "imgUrl": "https://thebookcoverdesigner.com/wp-content/uploads/2022/01/Whispers-of-the-forest-texts.jpg",
+        "stock": 18,
+        "GenreId": 4
+    },
+    {
+        "name": "Gourmet Words",
+        "description": "A delightful collection of food-inspired poetry.",
+        "price": 62000,
+        "imgUrl": "https://m.media-amazon.com/images/I/71imX-XpGgL._AC_UF350,350_QL50_.jpg",
+        "stock": 12,
+        "GenreId": 5
+    },
+    {
+        "name": "Burning Pages",
+        "description": "A thrilling mystery surrounding a lost manuscript.",
+        "price": 62000,
+        "imgUrl": "https://m.media-amazon.com/images/I/91Zk4X3btGL.jpg",
+        "stock": 20,
+        "GenreId": 4
+    },
+    {
+        "name": "The Golden Chapter",
+        "description": "A motivational book on success and perseverance.",
+        "price": 52000,
+        "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV8uSkAaAbxf6rVo7gGms3pL5VTFcHchwApw&s",
+        "stock": 25,
+        "GenreId": 4
+    },
+    {
+        "name": "Tales from the East",
+        "description": "A captivating collection of folklore from Asia.",
+        "price": 62000,
+        "imgUrl": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1400298581i/1423429.jpg",
+        "stock": 12,
+        "GenreId": 5
+    },
+    {
+        "name": "Echoes of History",
+        "description": "A compelling look into forgotten civilizations.",
+        "price": 48000,
+        "imgUrl": "https://m.media-amazon.com/images/I/815X92xXvDL._UF1000,1000_QL80_.jpg",
+        "stock": 10,
+        "GenreId": 1
+    },
+    {
+        "name": "Celestial Poetry",
+        "description": "A mesmerizing collection of poems inspired by the stars.",
+        "price": 56000,
+        "imgUrl": "https://www.accartbooks.com/app/uploads/books/1711584000/9789394501157-04-2-388x500.jpg",
+        "stock": 12,
+        "GenreId": 1
+    }
+]
+
