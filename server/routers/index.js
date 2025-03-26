@@ -9,6 +9,11 @@ router.post("/register", UserController.register);
 router.post("/login", UserController.login);
 router.post("/google-login", UserController.googleLogin);
 
+router.get("/", (req, res) => {
+  res.status(200).json({
+    message: "Server is running",
+  });
+});
 router.use(authentication);
 
 router.get("/books", Controller.listBooks);
@@ -24,6 +29,8 @@ router.delete("/books/:id", Controller.deleteBook);
 router.get("/genres", Controller.listGenres);
 
 router.get("/orders", Controller.listOrders);
+
+router.patch("/orders/:id", Controller.updateOrder);
 
 router.post("/orders", Controller.makeOrder);
 

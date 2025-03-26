@@ -103,8 +103,8 @@ class UserController {
       });
 
       const access_token = signToken({ id: user.id });
-
-      res.status(200).json({ access_token, user: { fullName: user.fullName } });
+      
+      res.status(200).json({ access_token, user: { fullName: user.fullName, role: user.role }});
     } catch (error) {
       next(error);
     }

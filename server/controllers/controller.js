@@ -21,10 +21,10 @@ class Controller {
 
       const prompt = `
                 Based on the following orders data: ${JSON.stringify(orders)}, 
-                give me 2/3 recommended orders from lastest order and the recommended order must get from ${JSON.stringify(
+                give me 2 recommended orders from lastest order and the recommended order must get from ${JSON.stringify(
                   books
                 )}. 
-                Do not include items outside this list menu.
+                Do not include items outside this list book.
                 
                 Respond strictly in the JSON format:
                 [
@@ -38,7 +38,7 @@ class Controller {
                     }
                 ]
 
-                If no recommendations, return [].`;
+                If there is no history of order, return [].`;
       console.log(prompt, "prompt <<<<<<<<<<<<<<<");
 
       const response = await model.generateContent(prompt);
@@ -155,7 +155,7 @@ class Controller {
   static async listGenres(req, res, next) {
     try {
       const genres = await Genre.findAll();
-
+      
       res.status(200).json(genres);
     } catch (error) {
       next(error);
@@ -173,14 +173,6 @@ class Controller {
         UserId: req.user.id,
       });
 
-      // orderItems.forEach(async (orderItem) => {
-      //   await OrderItem.create({
-      //     quantity: orderItem.quantity,
-      //     unitPrice: orderItem.unitPrice,
-      //     OrderId: newOrder.id,
-      //     BookId: orderItem.BookId,
-      //   });
-      // });
       for (const orderItem of orderItems) {
         await OrderItem.create({
           quantity: orderItem.quantity,
@@ -188,7 +180,7 @@ class Controller {
           OrderId: newOrder.id,
           BookId: orderItem.BookId,
         });
-      };
+      }
       let snap = new midtransClient.Snap({
         isProduction: false,
         serverKey: process.env.MIDTRANS_SERVER_KEY,
@@ -219,9 +211,35 @@ class Controller {
         }
       );
 
-      res.status(201).json({ message: "Create order success!", midtransToken });
+      res.status(201).json({
+        message: "Create order success!",
+        midtransToken,
+        order: newOrder,
+      });
     } catch (error) {
       console.log(error, "cek error ini atuh");
+
+      next(error);
+    }
+  }
+
+  static async updateOrder(req, res, next) {
+    try {
+      const { id } = req.params;
+      // const id = req.user.id;
+      
+      const order = await Order.findOne({ where: { id } });
+      if (!order) {
+        throw { name: "NotFound", message: "Order not found!" };
+      }
+
+      await order.update({
+        paymentStatus: "Success",
+      });
+
+      res.status(200).json({ message: "Payment status updated successfully" });
+    } catch (error) {
+      console.log(error, "<<<<<<<<<<<<<<<<<<< errrrrrrrrrrrrrrrrrr");
 
       next(error);
     }
