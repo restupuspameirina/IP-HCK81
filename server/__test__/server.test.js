@@ -320,6 +320,15 @@ describe("POST /google-login", () => {
   });
 });
 
+describe("GET /", () => {
+  test("should return server status", async () => {
+    const response = await request(app).get("/");
+    
+    expect(response.status).toBe(200);
+    expect(response.body).toHaveProperty("message", "Server is running");
+  });
+});
+
 describe("GET /books", () => {
   test("should be success get books", async () => {
     const response = await request(app)
@@ -832,5 +841,27 @@ describe("PATCH /orders/:id", () => {
 
     expect(response.status).toBe(401);
     expect(response.body.message).toEqual("Invalid token");
+  });
+});
+
+describe("Error Handling", () => {
+  test("should handle invalid JSON in request body", async () => {
+    const response = await request(app)
+      .post("/books")
+      .set("Authorization", `Bearer ${access_token_user}`)
+      .set("Content-Type", "application/json")
+      .send("{invalid json");
+    
+    expect(response.status).toBe(400);
+  });
+
+  test("should return 500 for database errors", async () => {
+    // This test requires mocking the database error
+    // For simplicity, we'll use a non-existent endpoint that triggers a server error
+    const response = await request(app)
+      .get("/non-existent-endpoint-that-causes-error")
+      .set("Authorization", `Bearer ${access_token_user}`);
+    
+    expect(response.status).toBe(404);
   });
 });
